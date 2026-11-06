@@ -65,7 +65,7 @@ namespace B2BCandidateRegistration
                         Session["User_FirstName"] = dtRet.Rows[0]["User_FirstName"].ToString();
                         Session["User_LastName"] = dtRet.Rows[0]["User_LastName"].ToString();
                         Session["User_B2BRowId"] = dtRet.Rows[0]["B2BRowId"].ToString();
-                        Response.Redirect("Enroll.aspx", false);
+                        Response.Redirect("Dashboard.aspx", false);
                         strMessage = "<script>HideProgress();</script>";
                     }
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "JSCR", strMessage, false);
@@ -102,7 +102,7 @@ namespace B2BCandidateRegistration
                         Session["User_FirstName"] = dtRet.Rows[0]["User_FirstName"].ToString();
                         Session["User_LastName"] = dtRet.Rows[0]["User_LastName"].ToString();
                         Session["User_B2BRowId"] = dtRet.Rows[0]["B2BRowId"].ToString();
-                        Response.Redirect("Enroll.aspx", false);
+                        Response.Redirect("Dashboard.aspx", false);
                     }
                     else
                     {
@@ -180,7 +180,7 @@ namespace B2BCandidateRegistration
                 string strEmail = txtLoginID.Text;
                 if (strEmail == "")
                 {
-                    string strRetMessage = "Please enter your email Id and click on Forgot password link.";
+                    string strRetMessage = "Please enter your email and click on Forgot password link.";
                     //lblError.Text = strRetMessage;
                     strMessage = "<script>showMessage('" + strRetMessage + "');HideProgress();</script>";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "JSCR", strMessage, false);

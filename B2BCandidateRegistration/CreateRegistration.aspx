@@ -47,7 +47,7 @@
                                 </tr>
                                 <tr>
                                     <td class="LTIFormTable-padleft15px">
-                                        <asp:Label ID="lblLoginID" runat="server" CssClass="LTIformlabel LTIformlabel-100px" Text="Email ID:" MaxLength="100"/>
+                                        <asp:Label ID="lblLoginID" runat="server" CssClass="LTIformlabel LTIformlabel-100px" Text="Email:" MaxLength="100"/>
                                     </td>
                                     <td align="left">
                                         <asp:TextBox ID="txtLoginID" runat="server" CssClass="LTIformtextbox LTIformtextbox-300px" />
@@ -110,7 +110,7 @@
                     <div id="dvOTP" align="center" style="margin-top:100px">                        
                         <table border="0" cellpadding="0" cellspacing="0" class="LTIformtable LTIFormTable-width550px">
                             <tr>
-                                <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;OTP has been send to your Email Id, valid for next 10 mins</th>
+                                <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;OTP has been send to your Email, valid for next 10 mins</th>
                                 <tr>
                                     <td colspan="2" class="LTIFormTable-textAlignCenter">
                                         <asp:Label ID="lblError_OTP" runat="server" CssClass="LTIformlabel" ForeColor="Red"></asp:Label>

@@ -60,7 +60,6 @@ C:\gitrepository\B2BCandidateRegistration\B2BCandidateRegistration\B2BCandidateR
 C:\gitrepository\B2BCandidateRegistration\B2BCandidateRegistration\B2BCandidateRegistration\bin\System.Web.Optimization.dll
 C:\gitrepository\B2BCandidateRegistration\B2BCandidateRegistration\B2BCandidateRegistration\bin\WebGrease.dll
 C:\gitrepository\B2BCandidateRegistration\B2BCandidateRegistration\B2BCandidateRegistration\bin\System.Web.Optimization.xml
-C:\gitrepository\B2BCandidateRegistration\B2BCandidateRegistration\B2BCandidateRegistration\bin\Newtonsoft.Json.xml
 C:\gitrepository\B2BCandidateRegistration\B2BCandidateRegistration\B2BCandidateRegistration\bin\Antlr3.Runtime.pdb
 C:\gitrepository\B2BCandidateRegistration\B2BCandidateRegistration\B2BCandidateRegistration\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\gitrepository\B2BCandidateRegistration\B2BCandidateRegistration\B2BCandidateRegistration\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml

@@ -16,13 +16,13 @@
                         <br />                                       
                         <table border="0" cellpadding="0" cellspacing="0" class="LTIformtable LTIFormTable-width550px">
                             <tr>
-                                <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;Login or Create an Account</th>                                
+                                <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;Log in or Create an Account</th>                                
                                 <tr>
                                     <td>&nbsp; </td>
                                 </tr>
                                 <tr>
                                     <td class="LTIFormTable-padleft15px" colspan="2">
-                                        <asp:Label ID="lblCreateAccount" runat="server" CssClass="LTIformlabel" Text="Please create an account or login to continue." />
+                                        <asp:Label ID="lblCreateAccount" runat="server" CssClass="LTIformlabel" Text="Please create an account or log in to continue." />
                                         <br />
                                         <asp:LinkButton ID="lnkCreateAccount" runat="server" CssClass="LTIformLinkButton" OnClick="lnkCreateAccount_Click" Text="Create an Account" CausesValidation="false"></asp:LinkButton>
                                         <br />
@@ -38,7 +38,7 @@
                                 </tr>
                                 <tr>
                                     <td class="LTIFormTable-padleft15px">
-                                        <asp:Label ID="lblLoginID" runat="server" CssClass="LTIformlabel LTIformlabel-100px" Text="Email ID:" />
+                                        <asp:Label ID="lblLoginID" runat="server" CssClass="LTIformlabel LTIformlabel-100px" Text="Email:" />
                                     </td>
                                     <td align="left">
                                         <asp:TextBox ID="txtLoginID" runat="server" CssClass="LTIformtextbox LTIformtextbox-300px" />
@@ -71,7 +71,7 @@
                                 </tr>
                                 <tr>
                                     <td class="LTIFormTable-textAlignCenter" colspan="2">
-                                        <asp:Button ID="btnLogin" runat="server" CssClass="LTIformNewButton" meta:resourcekey="btnLogin" Text="Login" OnClientClick="ShowProgress('progLoginMsg');CheckValidationControl();" OnClick="btnLogin_Click"/>
+                                        <asp:Button ID="btnLogin" runat="server" CssClass="LTIformNewButton" meta:resourcekey="btnLogin" Text="Log In" OnClientClick="ShowProgress('progLoginMsg');CheckValidationControl();" OnClick="btnLogin_Click"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -91,7 +91,7 @@
                     <div id="dvOTP" align="center" style="margin-top:100px">                        
                         <table border="0" cellpadding="0" cellspacing="0" class="LTIformtable LTIFormTable-width550px">
                             <tr>
-                                <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;OTP has been send to your Email Id, valid for next 10 mins</th>
+                                <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;A One Time Password (OTP) has been sent to your email and is valid for the next 10 minutes.</th>
                                 <tr>
                                     <td colspan="2" style="text-align: center">
                                         <asp:Label ID="lblError_OTP" runat="server" CssClass="LTIformlabel" ForeColor="Red"></asp:Label>

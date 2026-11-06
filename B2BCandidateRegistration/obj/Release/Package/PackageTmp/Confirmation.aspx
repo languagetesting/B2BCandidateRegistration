@@ -16,7 +16,10 @@
                         <tr>
                             <td class="LTIFormTable-padleft15px">
                                 <div>
-                                    Thank you for Requesting <%=testname %>                                    
+                                    Thank you for requesting the <%=testname %>. Go to the <b>Test(s) Scheduled</b> menu (or <b>Tests to Be Scheduled</b> for OPI) to view instructions and complete the next steps.
+                                    <br />
+                                    <br />
+                                    <a class="nav-link" href="Dashboard.aspx">Click here</a> to return to the main landing page.
                                 </div>
                             </td>
                         </tr>

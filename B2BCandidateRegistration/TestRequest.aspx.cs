@@ -354,6 +354,27 @@ namespace B2BCandidateRegistration
                 }
                 else
                 {
+                    if (Session["IsBundle"] != null)
+                    {
+                        IsBundle = (bool)Session["IsBundle"];
+                        if (IsBundle)
+                        {
+                            lblLanguage.Visible = false;
+                            ddlLanguage.Visible = false;
+                        }
+                        else
+                        {
+                            lblLanguage.Visible = true;
+                            ddlLanguage.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        IsBundle = false;
+                        lblLanguage.Visible = true;
+                        ddlLanguage.Visible = true;
+                    }
+
                     //recreate client custom fields
                     if (Session["clientCFLst"] != null)
                     {
@@ -624,7 +645,7 @@ namespace B2BCandidateRegistration
             }
             catch (Exception Ex)
             {         
-                myDBClass.ErrorLogWrite("ClientSite", Ex.Message, Server.MapPath(this.AppRelativeVirtualPath), Request.UserAgent.ToString(), Request.UserHostName.ToString(), "SetupClientCustomFields", "SetupClientCustomFields");
+                myDBClass.ErrorLogWrite("B2BCandidateRegistration", Ex.Message, Server.MapPath(this.AppRelativeVirtualPath), Request.UserAgent.ToString(), Request.UserHostName.ToString(), "SetupClientCustomFields", "SetupClientCustomFields");
             }
         }
 
@@ -1176,7 +1197,27 @@ namespace B2BCandidateRegistration
                         cvDDL.CssClass = "LTIvalidation-error";
                         pnlTestFields.Controls.Add(cvDDL);
                     }
-                    
+
+                    if (xmlString != "" && xmlString != "<ROOT />")     //default value
+                    {
+                        StringReader sReader = new StringReader(xmlString);
+                        DataSet dSet = new DataSet();
+                        dSet.ReadXml(sReader);
+                        if (dSet.Tables[0].Rows.Count > 0)
+                        {
+                            for (int i = 0; i < dSet.Tables[0].Rows.Count; i++)
+                            {
+                                dSet.Tables[0].Rows[i]["ItemText"] = dSet.Tables[0].Rows[i]["ItemText"].ToString().Replace("_", " ");
+                                dSet.Tables[0].Rows[i]["ItemValue"] = dSet.Tables[0].Rows[i]["ItemValue"].ToString().Replace("_", " ");
+                            }
+                        }
+                        ddl.DataSource = dSet;
+                        ddl.DataValueField = "ItemValue";
+                        ddl.DataTextField = "ItemText";
+                        ddl.DataBind();
+                    }
+                    ddl.Items.Insert(0, new ListItem("Select a value", "-1"));
+
                     //if CF relationship exists
                     if ((Session["CF_HasCandidateRelationship"] != null) && ((bool)Session["CF_HasCandidateRelationship"] == true))
                     {
@@ -2512,7 +2553,7 @@ namespace B2BCandidateRegistration
 
             int expirationDays = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultExpirationDays"]);
             btItem.expirationdate = System.DateTime.Today.AddDays(expirationDays);
-            if (isBundle)
+            if (IsBundle)
             {
                 //retest
                 DropDownList ddlOPILanguage = (DropDownList)pnlTestFields.FindControl(controlId + "_ddlOPILanguage_" + index);
@@ -2554,7 +2595,7 @@ namespace B2BCandidateRegistration
             HiddenField hfCustomExpiryDt = (HiddenField)pnlTestFields.FindControl(controlId + "_hfCustomExpiryDt_" + index);
             int customExpiryDt = Convert.ToInt32(hfCustomExpiryDt.Value);
             btItem.expirationdate = System.DateTime.Today.AddDays(expirationDays);            
-            if (isBundle)
+            if (IsBundle)
             {                
                 DropDownList ddlOPIcLanguage = (DropDownList)pnlTestFields.FindControl(controlId + "_ddlOPIcLanguage_" + index);
                 btItem.langid = Convert.ToInt32(ddlOPIcLanguage.SelectedItem.Value);
@@ -2589,7 +2630,7 @@ namespace B2BCandidateRegistration
             int customExpiryDt = Convert.ToInt32(hfCustomExpiryDt.Value);
 
             btItem.expirationdate = System.DateTime.Today.AddDays(expirationDays);            
-            if (isBundle)
+            if (IsBundle)
             {                
                 DropDownList ddlRPTLanguage = (DropDownList)pnlTestFields.FindControl(controlId + "_ddlRPTLanguage_" + index);
                 btItem.langid = Convert.ToInt32(ddlRPTLanguage.SelectedItem.Value);
@@ -2673,7 +2714,7 @@ namespace B2BCandidateRegistration
             HiddenField hfCustomExpiryDt = (HiddenField)pnlTestFields.FindControl(controlId + "_hfCustomExpiryDt_" + index);
             int customExpiryDt = Convert.ToInt32(hfCustomExpiryDt.Value);
             btItem.expirationdate = System.DateTime.Today.AddDays(expirationDays);            
-            if (isBundle)
+            if (IsBundle)
             {
                 //retest
                 DropDownList ddlWPTLanguage = (DropDownList)pnlTestFields.FindControl(controlId + "_ddlWPTLanguage_" + index);
@@ -2709,7 +2750,7 @@ namespace B2BCandidateRegistration
 
             btItem.expirationdate = System.DateTime.Today.AddDays(expirationDays);
             
-            if (isBundle)
+            if (IsBundle)
             {            
                 DropDownList ddlLPTLanguage = (DropDownList)pnlTestFields.FindControl(controlId + "_ddlLPTLanguage_" + index);
                 btItem.langid = Convert.ToInt32(ddlLPTLanguage.SelectedItem.Value);
@@ -2750,7 +2791,7 @@ namespace B2BCandidateRegistration
 
             int expirationDays = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultExpirationDays"]);
             btItem.expirationdate = System.DateTime.Today.AddDays(expirationDays);
-            if (isBundle)
+            if (IsBundle)
             {
                 //retest
                 DropDownList ddlGenericLanguage = (DropDownList)pnlTestFields.FindControl(controlId + "_ddlGenericLanguage_" + index);
@@ -2783,7 +2824,7 @@ namespace B2BCandidateRegistration
             int customExpiryDt = Convert.ToInt32(hfCustomExpiryDt.Value);
             btItem.expirationdate = System.DateTime.Today.AddDays(expirationDays);
             
-            if (isBundle)
+            if (IsBundle)
             {
                 //retest
                 DropDownList ddlLNRLanguage = (DropDownList)pnlTestFields.FindControl(controlId + "_ddlLNRLanguage_" + index);
@@ -2885,6 +2926,7 @@ namespace B2BCandidateRegistration
         {
             try
             {
+                lblError.Text = "";
                 TMS_Lib.BAL.BundleClientCandidateOrder bccOrder;
                 List<TMS_Lib.BAL.BundleClientCandidateOrder> bundleLst = new List<TMS_Lib.BAL.BundleClientCandidateOrder>();
 
@@ -2985,24 +3027,24 @@ namespace B2BCandidateRegistration
 
                         if (RegHTML.IsMatch(bccCheckOPI.cand_firstname))
                         {
-                            message = message + "Candidate " + (ii + 1).ToString() + ": Invalid characters in First name field. ";
+                            message = message + "Invalid characters in First name field. ";
                         }
 
                         if (RegHTML.IsMatch(bccCheckOPI.cand_lastname))
                         {
-                            message = message + "Candidate " + (ii + 1).ToString() + ": Invalid characters in Last name field. ";
+                            message = message + "Invalid characters in Last name field. ";
                         }
 
                         if (RegHTML.IsMatch(bccCheckOPI.candidateid))
                         {
-                            message = message + "Candidate " + (ii + 1).ToString() + ": Invalid characters in Candidate Id field. ";
+                            message = message + "Invalid characters in Candidate Id field. ";
                         }
 
                         if ((bccCheckOPI.cand_firstname.Contains("')") || bccCheckOPI.cand_firstname.Contains("('") || bccCheckOPI.cand_firstname.Contains(";") || bccCheckOPI.cand_firstname.Contains("/>")) ||
                             (bccCheckOPI.cand_lastname.Contains("')") || bccCheckOPI.cand_lastname.Contains("('") || bccCheckOPI.cand_lastname.Contains(";") || bccCheckOPI.cand_lastname.Contains("/>")) ||
                             (bccCheckOPI.candidateid.Contains("')") || bccCheckOPI.candidateid.Contains("('") || bccCheckOPI.candidateid.Contains(";") || bccCheckOPI.candidateid.Contains("/>")))
                         {
-                            message = message + "Candidate " + (ii + 1).ToString() + ": Invalid characters in Candidate First name, Last name or Id field. ";
+                            message = message + "Invalid characters in Candidate First name, Last name or Id field. ";
                         }
                         else if ((bccCheckOPI.cand_firstname.Contains("'") && bccCheckOPI.cand_firstname.Contains("(") && bccCheckOPI.cand_firstname.Contains(")"))
                             || (bccCheckOPI.cand_firstname.Contains("="))
@@ -3011,7 +3053,7 @@ namespace B2BCandidateRegistration
                             || (bccCheckOPI.cand_firstname.Contains("/>"))
                             )
                         {
-                            message = message + "Candidate " + (ii + 1).ToString() + ": Invalid characters in First name field. ";
+                            message = message + "Invalid characters in First name field. ";
                         }
                         else if ((bccCheckOPI.cand_lastname.Contains("'") && bccCheckOPI.cand_lastname.Contains("(") && bccCheckOPI.cand_lastname.Contains(")"))
                             || (bccCheckOPI.cand_lastname.Contains("="))
@@ -3020,7 +3062,7 @@ namespace B2BCandidateRegistration
                             || (bccCheckOPI.cand_lastname.Contains("/>"))
                             )
                         {
-                            message = message + "Candidate " + (ii + 1).ToString() + ": Invalid characters in Last name field. ";
+                            message = message + "Invalid characters in Last name field. ";
                         }
                         else if ((bccCheckOPI.candidateid.Contains("'") && bccCheckOPI.candidateid.Contains("(") && bccCheckOPI.candidateid.Contains(")"))
                                  || (bccCheckOPI.candidateid.Contains("="))
@@ -3029,7 +3071,7 @@ namespace B2BCandidateRegistration
                                  || (bccCheckOPI.candidateid.Contains("/>"))
                                  )
                         {
-                            message = message + "Candidate " + (ii + 1).ToString() + ": Invalid characters in Candidate Id field. ";
+                            message = message + "Invalid characters in Candidate Id field. ";
                         }
 
                         if (btItem.producttype == 1)
@@ -3059,7 +3101,15 @@ namespace B2BCandidateRegistration
                             {
                                 if (dtRetest.Rows[0]["RetVal"].ToString() != "0")
                                 {
-                                    message = message + "<br/>&nbsp;- Candidate " + (ii + 1).ToString() + dtRetest.Rows[0]["RetMessage"].ToString();
+                                    if (message != "")
+                                    {
+                                        message = message + "<br/>";
+                                    }
+                                    message = message + "&nbsp;" + dtRetest.Rows[0]["RetMessage"].ToString().Replace("has", "You have").Replace("in your Clientsite.", ".");
+                                    if (message.Contains("Tests Scheduled") || message.Contains("Tests to be Scheduled"))
+                                    {
+                                        message = "&nbsp;" + "You already have an open test for this language. Please view it under the <b>Tests Scheduled</b> or <b>Tests to be Scheduled</b> menu options.";
+                                    }
                                 }
                             }
 
@@ -3068,7 +3118,7 @@ namespace B2BCandidateRegistration
                         {
                             try
                             {
-                                myDBClass.ErrorLogWrite("ClientSite", ex.Message + ex.StackTrace, Server.MapPath(this.AppRelativeVirtualPath), Request.UserAgent.ToString(), Request.UserHostName.ToString(), "btnSubmit_Click()", "");
+                                myDBClass.ErrorLogWrite("B2BCandidateRegistration", ex.Message + ex.StackTrace, Server.MapPath(this.AppRelativeVirtualPath), Request.UserAgent.ToString(), Request.UserHostName.ToString(), "btnSubmit_Click()", "");
                             }
                             catch { }
                         }
@@ -3077,7 +3127,7 @@ namespace B2BCandidateRegistration
 
                     if (strRPTLang != strLPTLang)
                     {
-                        message = message + "&nbsp;<br/>Candidate " + (ii + 1).ToString() + ": ACTFL Proficiency Placement Test must have same language for both Reading and Listening test";
+                        message = message + "&nbsp;<br/>ACTFL Proficiency Placement Test must have same language for both Reading and Listening test";
                     }
 
                 }
@@ -3089,7 +3139,7 @@ namespace B2BCandidateRegistration
                     {
                         //save client data first
                         client.setClientOrder(cOrder, ref orderid);
-                        myDBClass.B2B_TestRequest(Convert.ToInt32(Session["User_B2BRowId"].ToString()), Convert.ToInt32(orderid));
+                        myDBClass.B2B_TestRequest(Convert.ToInt32(Session["User_B2BRowId"].ToString()), Convert.ToInt32(orderid), Convert.ToInt32(Session["EnrollId"].ToString()));
                         //add orderid to each bundle candidate order
                         i = bundleLst.Count;     
                         bccOrder = bundleLst[i - 1];
@@ -3114,7 +3164,7 @@ namespace B2BCandidateRegistration
                 else
                 {                    
                     message = "<script>HideProgress();showMessage('" + message + "');</script>";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "JSCR", "<script>HideProgress();</script>", false);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "JSCR", message, false);
                 }
             }
             catch (Exception ex)

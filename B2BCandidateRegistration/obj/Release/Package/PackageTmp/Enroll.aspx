@@ -9,17 +9,17 @@
         <ContentTemplate>
             <div class="LTIFormTable-formLayou-min-height575px LTIFormTable-formLayout-padtop50px" align="center">                
                 <div class="form-group">
-                    <asp:Label ID="lblLabel1" runat="server" CssClass="LTIpagetitle" Text="Enrollment of your Tests"></asp:Label>
+                    <asp:Label ID="lblLabel1" runat="server" CssClass="LTIpagetitle" Text="Request Test(s)"></asp:Label>
                     <br />
                     <br />
                     <table border="0" cellpadding="0" cellspacing="0" class="LTIformtable LTIFormTable-width50per">
-                        <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;Enrollment Code</th>
+                        <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;Registration Code</th>
                         <tr>
                             <td>&nbsp; </td>
                         </tr>
                         <tr>
                             <td class="LTIFormTable-padleft15px">
-                                <asp:Label ID="lblTitle" runat="server" Text="Enter the enrollment code provided by the Institute" CssClass="LTIformlabel"></asp:Label>
+                                <asp:Label ID="lblTitle" runat="server" Text="Enter the Registration Code provided by your organization." CssClass="LTIformlabel"></asp:Label>
                             </td>
                         </tr>
                         <tr>

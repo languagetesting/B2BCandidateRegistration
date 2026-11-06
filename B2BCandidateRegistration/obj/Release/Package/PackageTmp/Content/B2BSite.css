@@ -9473,6 +9473,10 @@ form.form {
     font-family: Montserrat, sans-serif
 }
 
+    .footer .container {
+        padding-top: 25px;
+    }
+
     .footer a {
         color: #fff
     }
@@ -9549,9 +9553,18 @@ form.form {
 
     .footer .logo-footer {
         fill: #fff;
-        height: 66px;
+        height: 70px;
         width: 228px
     }
+
+.footer-column {
+    height: 134px;
+}
+
+.footer-copyright {
+    bottom: 0;
+    font-size: 0.8em;
+}
 
 html {
     min-height: 100%;
@@ -9587,9 +9600,21 @@ body {
     }
 }
 
+@media (max-width: 767px) {
+    .mobile-padding {
+        padding-top: 40px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .footer {
+        height: auto;
+    }
+}
+
 @media (min-width: 992px) {
     .footer {
-        height: 288px
+        height: 190px
     }
 }
 
@@ -9651,7 +9676,7 @@ body {
     cursor: pointer;
 }
 
-.LTIformtable {    
+.LTIformtable {
     border-collapse: separate;
     border-spacing: 0;
     background: #fff;
@@ -9701,8 +9726,8 @@ body {
     min-height: 345px;
 }
 
-.LTIFormTable-formLayout-padtop50px {    
-    padding-top:50px;
+.LTIFormTable-formLayout-padtop50px {
+    padding-top: 50px;
 }
 
 .LTIFormTable-textAlignRight {
@@ -10038,14 +10063,23 @@ body {
     margin: 0 2px;
 }
 
-    .modern-pager a:hover {
-        color: #0d6efd;
-    }
+.modern-pager a:hover {
+    color: #0d6efd;
+}
 
 .LTImodern-pager span {
     color: #0d6efd;
     font-size: 18px;
     font-weight: bold;
+}
+
+.LTImodern-grid tbody tr:last-child td[colspan],
+.LTImodern-grid tbody tr:last-child:not(.LTImodern-pager) td {
+    border-bottom: 3px solid #707275;
+}
+
+.LTImodern-pager td:not([colspan]) {
+    border-bottom: none !important;
 }
 
 .LTINewHeaderTitle {
@@ -10058,8 +10092,8 @@ body {
     height: 20px
 }
 
-.LTIvalidation-error {    
-    color: #d93025;    
+.LTIvalidation-error {
+    color: #d93025;
     font-weight: 500;
 }
 
@@ -10277,7 +10311,7 @@ body {
     border-radius: 10px;
 }
 
-.LTIlistbox {        
+.LTIlistbox {
     padding: 8px 10px;
     border: 1px solid #d9dde3;
     border-radius: 10px;

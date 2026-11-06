@@ -132,6 +132,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CreateRegistration.aspx" />
+    <Content Include="Dashboard.aspx" />
     <Content Include="Enroll.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -150,7 +151,10 @@
     <Content Include="fonts\Montserrat-UltraLight.otf" />
     <Content Include="B2BCandDashboard.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Images\ACTFL_LTI_COBRAND_Logo.png" />
     <Content Include="Images\Calendar.jpg" />
+    <Content Include="Images\Enrollment.png" />
+    <Content Include="Images\footer-logo-actfl.png" />
     <Content Include="Images\LTI-envelope.png" />
     <Content Include="Images\LTI-facebook-white.png" />
     <Content Include="Images\LTI-linked-in-white.png" />
@@ -160,6 +164,9 @@
     <Content Include="Images\LTi-rss-white.png" />
     <Content Include="Images\LTI-twitter-white.png" />
     <Content Include="Images\lti_banner.jpg" />
+    <Content Include="Images\LTI_logo_Oct_2025_Registered_Digital_White.png" />
+    <Content Include="Images\Scheduled.png" />
+    <Content Include="Images\ToSchedule.png" />
     <Content Include="Images\user_icon.png" />
     <Content Include="Images\warning.jpg" />
     <Content Include="Login.aspx" />
@@ -223,6 +230,13 @@
     </Compile>
     <Compile Include="CreateRegistration.aspx.designer.cs">
       <DependentUpon>CreateRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Enroll.aspx.cs">
       <DependentUpon>Enroll.aspx</DependentUpon>

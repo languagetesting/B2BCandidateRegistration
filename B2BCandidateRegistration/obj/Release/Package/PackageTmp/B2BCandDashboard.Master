@@ -6,12 +6,12 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Language Testing International</title>
+    <title>Candidate Registration</title>
     
     <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="~/Content/B2BSite.css" />
-    <link href="../Content/all.min.css" rel="stylesheet" />
+    <link href="Content/all.min.css" rel="stylesheet" />
     <script type="text/javascript" src="Scripts/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="Scripts/WebForms/B2BCandReg.js"></script>
     
@@ -27,15 +27,15 @@
                 <div class="justify-content-end" id="navbarSupportedContent" role="navigation" style="padding-right:50px;">
                     <ul class="navbar-nav">                    
                         <li class="nav-item sub-menu-parent">
-                            <a class="nav-link" data-toggle="dropdown" href="#">Tests</a>
+                            <a class="nav-link" data-toggle="dropdown" href="Dashboard.aspx" title="Click to go to Overview Dashboard">Tests</a>
                             <ul class="nav-dropdown about-lti-menu">
-                                <li><a href="Enroll.aspx">Enroll New Test</a></li>
+                                <li><a href="Enroll.aspx">Request Test(s)</a></li>
                                 <li><a href="TestsToSchedule.aspx">Tests to be Scheduled</a></li>
-                                <li><a href="ScheduledTests.aspx">Scheduled Tests</a></li>
+                                <li><a href="ScheduledTests.aspx">Tests Scheduled</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="Dashboard.aspx" title="Click to go to Overview Dashboard">
                                 <div class="lti-user-icon"></div>
                                 <%= Session["User_FirstName"] %></a>
                             <ul class="nav-dropdown about-lti-menu">
@@ -55,8 +55,8 @@
         <asp:ContentPlaceHolder ID="cphFooter" runat="server">
             <footer class="footer">
             <div class="container">
-                <div class="row mt-2">
-                    <div class="col-lg-3 col-md-12 order-2 order-lg-1 mb-2">
+                <div class="row">
+                    <div class="footer-column col-lg-3 col-md-12 order-2 order-lg-1 mobile-padding">
                         <!--?xml version="1.0" encoding="utf-8"?-->
                         <!-- Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                         <svg class="logo-footer" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 583 170.2" xml:space="preserve">
@@ -205,45 +205,29 @@
             	c0.5,0.5,1.6,1.1,2.4,1.1c1.1,0,2.2-0.3,3.3-1.1c0.8-0.5,1.4-1.4,1.6-2.2c0.3-0.5,0.3-1.6,0.3-3.3L564.8,127.8L564.8,127.8z
             	 M576.5,139.7v-33.9h6.5v33.6h-6.5V139.7z"></path>
                         <path class="st0" d="M0,0h43.1v105.3h67.6v34.4H0V0z M105.8,0h131.3v34.5h-44.2v105.2h-43.1V34.4h-44V0z M253.4,0h43.4v139.7h-43.4V0z"></path>
-            </svg>
-
+            </svg>					
                     </div>
-                    <div class="footer-contact col-lg-3 col-md-4 order-1 order-lg-2 mb-2">
-                        <h4>Contact Us</h4>
-                        <p class="phone">1-800-486-8444</p>
-                        <p class="address"><span><span>580 White Plains Rd #660</span> Tarrytown, NY 10591</span></p>
-                        <p class="email"><a href="https://www.languagetesting.com/contact-us/support" target="_blank">Contact Us</a></p>
-                        <div class="social-list">
-                            <div class="social">
-                                <a href="https://www.facebook.com/LTILanguageTests/" target="_blank"><img src="Images/LTI-facebook-white.png" alt=""></a>
-                            </div>
-                            <div class="social">
-                                <a href="https://www.linkedin.com/company/1332173" target="_blank"><img src="Images/LTI-linked-in-white.png" alt=""></a>
-                            </div>
-                            <div class="social">
-                                <a href="https://twitter.com/ltilanguagetest" target="_blank"><img src="Images/LTI-twitter-white.png" alt=""></a>
-                            </div>
-                            <div class="social">
-                                <a href="https://blog.languagetesting.com/" target="_blank"><img src="Images/LTI-rss-white.png" alt=""></a>
-                            </div>
-                        </div>
+                    <div class="footer-column col-lg-3 col-md-3 order-1 order-lg-2">
+						<img src="Images/footer-logo-actfl.png">
+						<p>Exclusive Licensee of ACTFL</p>	
                     </div>
-                    <div class="footer-company col-lg-3 col-md-4 order-1 order-lg-2 mb-2">
-                        <h4>Company</h4>
-                        <p><a href="https://www.languagetesting.com/lti-information/who-we-are" target="_blank">About LTI</a></p>
-                        <p><a href="https://www.languagetesting.com/retail-clients/" target="_blank">Clients</a></p>
-                        <p><a href="mailto:customercare@languagetesting.com" target="_blank">Technical Support</a></p>
+                    <div class="footer-column col-lg-2 col-md-2 order-1 order-lg-2">
+                        <h4>Company</h4>                        
                         <p><a href="https://www.languagetesting.com/lti-information/privacy" target="_blank">Privacy Policy</a></p>
                     </div>
-                    <div class="footer-information col-lg-3 col-md-4 order-1 order-lg-2 mb-2">
-                        <h4>Information</h4>
-                        <p><a href="https://www.languagetesting.com/lti-information/faq" target="_blank">FAQs</a></p>
-                        <p><a href="https://www.languagetesting.com/lti-information/understanding-proficiency" target="_blank"u>Understanding Proficiency</a></p>
-                        <p><a href="https://www.languagetesting.com/lti-for-institutions/verify-a-credential/" target="_blank">Verify a Credential</a></p>
-                        <p><a href="https://www.languagetesting.com/language-testing-and-assessment/" target="_blank">Language Testing</a></p>
-                    </div>
+                    <div class="footer-column col-lg-4 col-md-6 order-1 order-lg-2">
+                        <h4>Contact Us</h4>
+                        <p class="phone">914-963-7110 option 1 or 1-800-486-8444 Option 1</p>
+                        <p class="address"><span><span>580 White Plains Rd #660</span> Tarrytown, NY 10591</span></p>
+                        <p class="email"><a href="mailto:support@languagetesting.com" target="_blank">support@languagetesting.com</a></p>                        
+                    </div>                    
                 </div>
-            </div>
+				<div class="row">
+					<div class="col-sm-12">
+						<p class="footer-copyright">&copy;<%= DateTime.Now.Year %> - Language Testing International, Inc</p>
+					</div>
+				</div>
+            </div>			
         </footer>
         </asp:ContentPlaceHolder>
 

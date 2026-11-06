@@ -42,7 +42,7 @@
                                                 <span style="display:inline-block; width:160px;">
                                                     <asp:Button runat="server" ID="btnSchedule" Text="Start Test / Reschedule" CssClass="LTIformNewButton" ToolTip="Start Test / Reschedule your Test." onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'" 
                                                             OnClick="btnSchedule_Click" OnClientClick="ShowProgress('progloadingMsg');"/>
-                                                    <asp:Button runat="server" ID="btnInstructions" Text="View Instruction" CssClass="LTIformNewButton" ToolTip="View Instruction for the Test." onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+                                                    <asp:Button runat="server" ID="btnInstructions" Text="View Instructions" CssClass="LTIformNewButton" ToolTip="View Instruction for the Test." onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
                                                             OnClick="btnInstructions_Click" />
                                                 </span>                                                
                                                 <asp:HiddenField ID="hdnProductType" Value='<%#Bind("ProductType")%>' runat="server" />

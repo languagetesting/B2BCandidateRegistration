@@ -691,13 +691,14 @@ namespace B2BCandidateRegistration
             }
         }
 
-        public DataTable B2B_TestRequest(int intB2BRowId, int intOrderId)
+        public DataTable B2B_TestRequest(int intB2BRowId, int intOrderId, int intEnrollId)
         {
             try
             {
-                Object[] objParam = new Object[2];
+                Object[] objParam = new Object[3];
                 objParam[0] = intB2BRowId;
                 objParam[1] = intOrderId;
+                objParam[2] = intEnrollId;
                 return GlobalUtils.DBMgmt.ExecuteDataTable(GetConnectionString(), "usp_B2BCandidateRegistration_TestRequest", objParam);
             }
             catch (Exception ee)
@@ -731,6 +732,22 @@ namespace B2BCandidateRegistration
                 objParam[0] = intB2BRowId;
                 objParam[1] = strEmailID;
                 return GlobalUtils.DBMgmt.ExecuteDataTable(GetConnectionString(), "usp_B2BCandidateRegistration_TestsScheduled", objParam);
+            }
+            catch (Exception ee)
+            {
+                ErrorLogWrite(appName, ee.Message, "", "", "", "B2B_TestsScheduled()", "");
+                throw new ArgumentException(ee.Message.ToString());
+            }
+        }
+
+        public DataTable B2B_DashBoard(int intB2BRowId, string strEmailID)
+        {
+            try
+            {
+                Object[] objParam = new Object[2];
+                objParam[0] = intB2BRowId;
+                objParam[1] = strEmailID;
+                return GlobalUtils.DBMgmt.ExecuteDataTable(GetConnectionString(), "usp_B2BCandidateRegistration_DashBoard", objParam);
             }
             catch (Exception ee)
             {

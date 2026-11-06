@@ -26,16 +26,16 @@ namespace B2BCandidateRegistration
                 DataTable dtRet = myDBClass.EnrollCode_Validate(txtCode.Text);
                 if (dtRet.Rows.Count <= 0)
                 {
-                    strRetMessage = "Invalid Enrollment Code.";
+                    strRetMessage = "Invalid Registration Code.";
                     strMessage = "<script>HideProgress();showMessage('" + strRetMessage + "');</script>";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "JSCR", strMessage, false);
                 }
                 else
                 {
                     DateTime dtExpiryDate = Convert.ToDateTime(dtRet.Rows[0]["ExpirationDate"].ToString());
-                    if (dtExpiryDate < DateTime.Now.AddDays(-1))
+                    if (Convert.ToDateTime(dtExpiryDate.ToShortDateString()) < Convert.ToDateTime(DateTime.Now.ToShortDateString()))
                     {
-                        strRetMessage = "Enrollment Code has Expired.";
+                        strRetMessage = "That Registration Code has expired.";
                         strMessage = "<script>HideProgress();showMessage('" + strRetMessage + "');</script>";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "JSCR", strMessage, false);
                     }
@@ -50,7 +50,7 @@ namespace B2BCandidateRegistration
             }
             catch (Exception Ex)
             {
-                lblError.Text = "Please retry, failed to validate your Enrollment Code.";
+                lblError.Text = "Please retry, failed to validate your Registration Code.";
                 try
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "JSCR", "<script>HideProgress();</script>", false);
