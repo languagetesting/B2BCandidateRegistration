@@ -1,0 +1,27 @@
+name: Validate PR Source Branch to check that EPIC is not accidentially merged to main branch
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate-source:
+    name: Validate PR source is dev
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check source branch
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_BRANCH" != "dev" ]; then
+            echo "::error::PRs into main must come from dev."
+            echo "Current source branch: $HEAD_BRANCH"
+            exit 1
+          fi
+
+          echo "Valid source branch: dev"
