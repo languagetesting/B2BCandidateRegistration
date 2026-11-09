@@ -8,6 +8,7 @@ on:
     paths-ignore:
       - '.github/workflows/builddeploy.yml'
       - 'scripts/unzip_and_copy.ps1'
+      - '.github/workflows/validate-pr-source.yml'
 
 jobs:
   build:
