@@ -1,0 +1,87 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths-ignore:
+      - '.github/workflows/builddeploy.yml'
+      - 'scripts/unzip_and_copy.ps1'
+      - '.github/workflows/validate-pr-source.yml'
+
+jobs:
+  build:
+    name: Build and analyze
+    runs-on: windows-latest
+    environment:
+      name: ${{ github.ref_name == 'main' && 'UAT' || 'UAT' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'zulu' # Alternative distribution options are available.
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache SonarQube scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+      - name: Install SonarQube scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path ${{ runner.temp }}\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path ${{ runner.temp }}\scanner
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2 
+        
+      - name: Build and analyze
+        shell: powershell
+        run: |
+          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"languagetesting_B2BCandidateRegistration_77012da9-ec13-40c9-8f0d-4a65346f1eb1" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
+          msbuild B2BCandidateRegistration.sln /t:Rebuild /p:Configuration=Release
+          ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+      - name: Build the solution
+        run: msbuild .\B2BCandidateRegistration.sln /p:Configuration=Release /p:DeployOnBuild=true /p:OutputPath=${{ github.workspace }}\output
+
+      - name: Delete deployment.zip if it exists
+        shell: pwsh
+        run: |
+          $file = "${{ github.workspace }}\output\deployment.zip"
+          if (Test-Path $file) {
+            Remove-Item $file -Force
+            Write-Output "Deleted $file"
+          } else {
+            Write-Output "$file does not exist"
+          }
+    
+      - name: Zip the published files
+        run: Compress-Archive -Path "${{ github.workspace }}\output\*" -DestinationPath "${{ github.workspace }}\output\B2BCandidateRegistration_deployment.zip" -Force
+
+      - name: Step 2 - Create final deployment zip with output.zip, scripts folder, and appspec.yml
+        run: Compress-Archive -Path "${{ github.workspace }}\output\B2BCandidateRegistration_deployment.zip","${{ github.workspace }}\scripts","${{ github.workspace }}\appspec.yml" -DestinationPath "${{ github.workspace }}\output\deployment.zip" -Force
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1  # Change to your AWS region
+
+      - name: Upload to S3
+        run: |
+          $timestamp = Get-Date -Format "yyyy-MM-dd"
+          aws s3 cp "${{ github.workspace }}\output\deployment.zip" "s3://${{ vars.S3_BUCKET }}/Deployments/${{ vars.DEPLOY_ENV }}_B2BCandidateRegistration_deployment-package.zip"    

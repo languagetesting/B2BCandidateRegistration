@@ -1,0 +1,11 @@
+version: 0.0
+os: windows
+files:
+  - source: B2BCandidateRegistration_deployment.zip
+    destination: C:\vijay\AutoDeploy
+
+hooks:
+  AfterInstall:
+    - location: scripts/unzip_and_copy.ps1
+      timeout: 300
+      runas: Administrator
