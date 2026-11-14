@@ -114,22 +114,25 @@ namespace B2BCandidateRegistration
                             }
                             catch { }
 
-                            if ((candidateOrderListTOPIc[i].CandidateEmail != null) && (candidateOrderListTOPIc[i].CandidateEmail != ""))
+                            if ((candidateOrderListTOPIc[i].RatingCertificationName.ToUpper().StartsWith("UNOFFICIAL")) && (candidateOrderListTOPIc[i].status.ToUpper() == "SCHEDULED"))
                             {
-                                SendEmailToCandidateTOPIc(candidateOrderListTOPIc[i].Cand_FirstName + " " + candidateOrderListTOPIc[i].Cand_LastName,
-                                                        candidateOrderListTOPIc[i].CandidateEmail,
-                                                        candidateOrderListTOPIc[i].ClientName,
-                                                        candidateOrderListTOPIc[i].LanguageName,
-                                                        candidateOrderListTOPIc[i].EnrollmentID,
-                                                        candidateOrderListTOPIc[i].Password,
-                                                        String.Format("{0:M/d/yyyy}", candidateOrderListTOPIc[i].ExpirationDate),
-                                                        (int)candidateOrderListTOPIc[i].ProductType,
-                                                        (int)candidateOrderListTOPIc[i].TestDelivery,
-                                                        testname,
-                                                        (int)candidateOrderListTOPIc[i].PromptGeneration,
-                                                        candidateOrderListTOPIc[i].CF10,
-                                                        (Session["Enroll_ClientIdCustomEmailCode"].ToString()),
-                                                        ApptId);
+                                if ((candidateOrderListTOPIc[i].CandidateEmail != null) && (candidateOrderListTOPIc[i].CandidateEmail != ""))
+                                {
+                                    SendEmailToCandidateTOPIc(candidateOrderListTOPIc[i].Cand_FirstName + " " + candidateOrderListTOPIc[i].Cand_LastName,
+                                                            candidateOrderListTOPIc[i].CandidateEmail,
+                                                            candidateOrderListTOPIc[i].ClientName,
+                                                            candidateOrderListTOPIc[i].LanguageName,
+                                                            candidateOrderListTOPIc[i].EnrollmentID,
+                                                            candidateOrderListTOPIc[i].Password,
+                                                            String.Format("{0:M/d/yyyy}", candidateOrderListTOPIc[i].ExpirationDate),
+                                                            (int)candidateOrderListTOPIc[i].ProductType,
+                                                            (int)candidateOrderListTOPIc[i].TestDelivery,
+                                                            testname,
+                                                            (int)candidateOrderListTOPIc[i].PromptGeneration,
+                                                            candidateOrderListTOPIc[i].CF10,
+                                                            (Session["Enroll_ClientIdCustomEmailCode"].ToString()),
+                                                            ApptId);
+                                }
                             }
                         }
                     }
@@ -148,22 +151,24 @@ namespace B2BCandidateRegistration
                                 }
                             }
                             catch { }
-
-                            if ((candidateOrderList[i].email != null) && (candidateOrderList[i].email != ""))
+                            if ((candidateOrderList[i].RatingCertificationName.ToUpper().StartsWith("UNOFFICIAL")) && (candidateOrderList[i].TestStatus.ToUpper() == "SCHEDULED"))
                             {
-                                SendEmailToCandidate(candidateOrderList[i].firstname + " " + candidateOrderList[i].lastname,
-                                                        candidateOrderList[i].email,
-                                                        clientOrderList[0].ClientName,
-                                                        candidateOrderList[i].languagename,
-                                                        candidateOrderList[i].login,
-                                                        candidateOrderList[i].password,
-                                                        candidateOrderList[i].ExpirationDate,
-                                                        (int)candidateOrderList[i].ProductType,
-                                                        (int)candidateOrderList[i].TestDelivery,
-                                                        testname,
-                                                        (bool)candidateOrderList[i].Proctorless,
-                                                        (Session["Enroll_ClientIdCustomEmailCode"].ToString()),
-                                                        ApptId);
+                                if ((candidateOrderList[i].email != null) && (candidateOrderList[i].email != ""))
+                                {
+                                    SendEmailToCandidate(candidateOrderList[i].firstname + " " + candidateOrderList[i].lastname,
+                                                            candidateOrderList[i].email,
+                                                            clientOrderList[0].ClientName,
+                                                            candidateOrderList[i].languagename,
+                                                            candidateOrderList[i].login,
+                                                            candidateOrderList[i].password,
+                                                            candidateOrderList[i].ExpirationDate,
+                                                            (int)candidateOrderList[i].ProductType,
+                                                            (int)candidateOrderList[i].TestDelivery,
+                                                            testname,
+                                                            (bool)candidateOrderList[i].Proctorless,
+                                                            (Session["Enroll_ClientIdCustomEmailCode"].ToString()),
+                                                            ApptId);
+                                }
                             }
                         }
                     }

@@ -27,7 +27,7 @@ namespace B2BCandidateRegistration
                 {
                     if (Session["User_EmailId"] == null)
                     {
-                        Response.Redirect("Login.aspx?timeout=1");
+                        Response.Redirect("Login.aspx?timeout=1",false);
                     }
                     else
                     {
