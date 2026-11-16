@@ -89,7 +89,7 @@
 
                 <asp:Panel ID="pnlOTP" runat="server" Visible="false">
                     <div id="dvOTP" align="center" style="margin-top:100px">                        
-                        <table border="0" cellpadding="0" cellspacing="0" class="LTIformtable LTIFormTable-width550px">
+                        <table border="0" cellpadding="0" cellspacing="0" class="LTIformtable LTIFormTable-width80per">
                             <tr>
                                 <th class="LTINewHeaderTitle" colspan="2">&nbsp;&nbsp;A One Time Password (OTP) has been sent to your email and is valid for the next 10 minutes.</th>
                                 <tr>
@@ -101,11 +101,11 @@
                                     <td>&nbsp; </td>
                                 </tr>
                                 <tr>
-                                    <td class="LTIFormTable-padleft15px">
+                                    <td class="LTIFormTable-padleft15px" align="right">
                                         <asp:Label ID="lblOTP" runat="server" CssClass="LTIformlabel LTIformlabel-100px" Text="Enter OTP:" />
                                     </td>
                                     <td align="left">
-                                        <asp:TextBox ID="txtOTP" runat="server" CssClass="LTIformtextbox LTIformtextbox-300px" TextMode="Number" />
+                                        &nbsp;<asp:TextBox ID="txtOTP" runat="server" CssClass="LTIformtextbox LTIformtextbox-300px" TextMode="Number" />
                                     </td>
                                 </tr>
                                 <tr>

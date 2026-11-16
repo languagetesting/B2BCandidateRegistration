@@ -5,14 +5,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\publish\B2BCandidateRegistration</_PublishTargetUrl>
-    <History>True|2026-11-03T20:40:29.6290000Z;True|2026-10-31T09:40:38.5924761-04:00;True|2026-10-06T15:52:37.8284492-04:00;False|2026-10-06T15:51:02.5868461-04:00;True|2026-10-05T09:26:13.4968405-04:00;True|2026-10-01T12:17:25.1365369-04:00;True|2026-10-01T11:24:23.3625713-04:00;True|2026-09-30T15:08:12.3586588-04:00;</History>
+    <History>True|2026-11-13T18:07:17.8366565Z;True|2026-11-03T15:40:29.6290000-05:00;True|2026-10-31T09:40:38.5924761-04:00;True|2026-10-06T15:52:37.8284492-04:00;False|2026-10-06T15:51:02.5868461-04:00;True|2026-10-05T09:26:13.4968405-04:00;True|2026-10-01T12:17:25.1365369-04:00;True|2026-10-01T11:24:23.3625713-04:00;True|2026-09-30T15:08:12.3586588-04:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="B2BCand.Master">
-      <publishTime>10/31/2026 09:40:03</publishTime>
+      <publishTime>11/05/2026 15:07:51</publishTime>
     </File>
     <File Include="B2BCandDashboard.Master">
-      <publishTime>10/31/2026 09:45:32</publishTime>
+      <publishTime>11/05/2026 15:09:54</publishTime>
     </File>
     <File Include="bin/AjaxControlToolkit.dll">
       <publishTime>04/09/2010 17:18:32</publishTime>
@@ -30,10 +30,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/16/2019 13:33:30</publishTime>
     </File>
     <File Include="bin/B2BCandidateRegistration.dll">
-      <publishTime>11/03/2026 15:40:28</publishTime>
+      <publishTime>11/13/2026 13:07:16</publishTime>
     </File>
     <File Include="bin/B2BCandidateRegistration.pdb">
-      <publishTime>11/03/2026 15:40:28</publishTime>
+      <publishTime>11/13/2026 13:07:16</publishTime>
     </File>
     <File Include="bin/GlobalUtils20.dll">
       <publishTime>08/15/2022 17:32:39</publishTime>
@@ -228,7 +228,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/29/2025 15:23:29</publishTime>
     </File>
     <File Include="Content/B2BSite.css">
-      <publishTime>10/30/2026 13:40:22</publishTime>
+      <publishTime>11/05/2026 15:07:30</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>08/10/2026 16:12:22</publishTime>
@@ -296,6 +296,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Global.asax">
       <publishTime>08/10/2026 16:12:17</publishTime>
     </File>
+    <File Include="Images/ACTFL_LTI_COBRAND_Logo.png">
+      <publishTime>11/05/2026 15:00:08</publishTime>
+    </File>
     <File Include="Images/Calendar.jpg">
       <publishTime>07/15/2020 16:40:27</publishTime>
     </File>
@@ -332,6 +335,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Images/lti_banner.jpg">
       <publishTime>09/18/2026 12:43:50</publishTime>
     </File>
+    <File Include="Images/LTI_logo_Oct_2025_Registered_Digital_White.png">
+      <publishTime>11/05/2026 14:41:23</publishTime>
+    </File>
     <File Include="Images/Scheduled.png">
       <publishTime>10/06/2026 15:38:18</publishTime>
     </File>
@@ -345,7 +351,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/15/2020 16:40:37</publishTime>
     </File>
     <File Include="Login.aspx">
-      <publishTime>11/03/2026 15:35:55</publishTime>
+      <publishTime>11/03/2026 15:47:51</publishTime>
     </File>
     <File Include="ScheduledTests.aspx">
       <publishTime>10/31/2026 09:30:32</publishTime>
@@ -408,7 +414,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/10/2026 16:12:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/01/2026 11:24:22</publishTime>
+      <publishTime>11/13/2026 13:07:17</publishTime>
     </File>
     <File Include="webfonts/fa-solid-900.woff2">
       <publishTime>05/29/2025 15:35:12</publishTime>

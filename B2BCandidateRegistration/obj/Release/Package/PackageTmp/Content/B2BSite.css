@@ -9557,6 +9557,12 @@ form.form {
         width: 228px
     }
 
+    .footer .logo-ACTFLTI {
+        fill: #fff;
+        height: 125px;
+        width: 131px
+    }
+
 .footer-column {
     height: 134px;
 }

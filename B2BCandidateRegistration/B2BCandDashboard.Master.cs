@@ -11,10 +11,14 @@ namespace B2BCandidateRegistration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User_FirstName"] == null)
+            try
             {
-                Response.Redirect("Login.aspx?timeout=1");
+                if (Session["User_FirstName"] == null)
+                {
+                    Response.Redirect("Login.aspx?timeout=1", false);
+                }
             }
+            catch { }
         }
     }
 }
